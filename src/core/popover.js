@@ -43,7 +43,7 @@ export default class Popover extends Element {
 
     this.window = window;
     this.document = document;
-    this.rootElement = isDomElement(options.rootElement) ? options.rootElement : document.querySelector(options.rootElement);
+    this.rootElement = isDomElement(options.rootElement) ? options.rootElement : this.document.querySelector(options.rootElement);
   }
 
   /**

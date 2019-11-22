@@ -22,8 +22,8 @@ export default class Overlay {
     this.document = document;
 
     this.removeNode = this.removeNode.bind(this);
-    console.log(options.rootElement, isDomElement(options.rootElement), document.querySelector(options.rootElement));
-    this.rootElement = isDomElement(options.rootElement) ? options.rootElement : document.querySelector(options.rootElement);
+    console.log(options.rootElement, isDomElement(options.rootElement), this.document.querySelector(options.rootElement));
+    this.rootElement = isDomElement(options.rootElement) ? options.rootElement : this.document.querySelector(options.rootElement);
   }
 
   /**
