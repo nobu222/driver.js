@@ -822,6 +822,12 @@ declare module 'driver.js' {
       className?: string;
 
       /**
+       * root element to add overlay,popover,stage
+       * @default document.body
+       */
+      rootElement?: string | HTMLElement | Node;
+
+      /**
        * Callback to be called when element is about to be highlighted
        * @param {Driver.Element} element
        * @returns any

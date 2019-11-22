@@ -12,7 +12,7 @@ import {
   ID_POPOVER,
   POPOVER_HTML,
 } from '../common/constants';
-import { createNodeFromString } from '../common/utils';
+import { createNodeFromString, isDomElement } from '../common/utils';
 
 /**
  * Popover that is displayed on top of the highlighted element
@@ -43,6 +43,7 @@ export default class Popover extends Element {
 
     this.window = window;
     this.document = document;
+    this.rootElement = isDomElement(options.rootElement) ? options.rootElement : document.querySelector(options.rootElement);
   }
 
   /**
@@ -56,7 +57,7 @@ export default class Popover extends Element {
     }
 
     popover = createNodeFromString(POPOVER_HTML(this.options.className));
-    document.body.appendChild(popover);
+    this.rootElement.appendChild(popover);
 
     this.node = popover;
     this.tipNode = popover.querySelector(`.${CLASS_POPOVER_TIP}`);

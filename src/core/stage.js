@@ -1,5 +1,5 @@
 import { CLASS_STAGE_NO_ANIMATION, ID_STAGE, STAGE_HTML } from '../common/constants';
-import { createNodeFromString } from '../common/utils';
+import { createNodeFromString, isDomElement } from '../common/utils';
 import Element from './element';
 
 /**
@@ -18,6 +18,7 @@ export default class Stage extends Element {
     this.options = options;
     this.window = window;
     this.document = document;
+    this.rootElement = isDomElement(options.rootElement) ? options.rootElement : document.querySelector(options.rootElement);
   }
 
   /**
@@ -28,7 +29,7 @@ export default class Stage extends Element {
     let stage = this.document.getElementById(ID_STAGE);
     if (!stage) {
       stage = createNodeFromString(STAGE_HTML);
-      document.body.appendChild(stage);
+      this.rootElement.appendChild(stage);
     }
 
     this.node = stage;

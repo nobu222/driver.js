@@ -1,5 +1,5 @@
 import { ANIMATION_DURATION_MS, ID_OVERLAY, OVERLAY_HTML } from '../common/constants';
-import { createNodeFromString } from '../common/utils';
+import { createNodeFromString, isDomElement } from '../common/utils';
 
 /**
  * Responsible for overlay creation and manipulation i.e.
@@ -22,6 +22,7 @@ export default class Overlay {
     this.document = document;
 
     this.removeNode = this.removeNode.bind(this);
+    this.rootElement = isDomElement(options.rootElement) ? options.rootElement : document.querySelector(options.rootElement);
   }
 
   /**
@@ -32,7 +33,7 @@ export default class Overlay {
     let pageOverlay = this.document.getElementById(ID_OVERLAY);
     if (!pageOverlay) {
       pageOverlay = createNodeFromString(OVERLAY_HTML);
-      document.body.appendChild(pageOverlay);
+      this.rootElement.appendChild(pageOverlay);
     }
 
     this.node = pageOverlay;
