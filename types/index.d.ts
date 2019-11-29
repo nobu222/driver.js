@@ -657,12 +657,12 @@ declare module 'driver.js' {
       /**
        * Title for the popover
        */
-      title?: string;
+      title: string;
 
       /**
        * Description for the popover
        */
-      description: string;
+      description?: string;
 
       /**
        * Whether to show control buttons or not
